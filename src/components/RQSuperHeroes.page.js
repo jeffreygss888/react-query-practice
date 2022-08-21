@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-const fetchSuperHeroes = () => axios.get('http://localhost:4000/superheroes');
+const fetchSuperHeroes = () =>
+  axios.get('http://localhost:4000/superheroes').then((res) => res.data);
 
 export const RQSuperHeroesPage = () => {
   /* NOTES 
@@ -9,7 +10,14 @@ export const RQSuperHeroesPage = () => {
     - Second params is the fetcher
   */
 
-  const { isLoading, data } = useQuery('super-heroes', fetchSuperHeroes);
+  const { isLoading, data, isError } = useQuery(
+    'super-heroes',
+    fetchSuperHeroes
+  );
+
+  if (isError) {
+    return <p>Heroes not found</p>;
+  }
 
   return (
     <>
@@ -17,10 +25,8 @@ export const RQSuperHeroesPage = () => {
       {/* NOTES data returns an object of our queried data */}
       {isLoading ? (
         <p>Loading...</p>
-      ) : data ? (
-        data.data.map((hero) => <div key={hero.name}>{hero.name}</div>)
       ) : (
-        <p>Heroes not found!</p>
+        data && data.map((hero) => <div key={hero.name}>{hero.name}</div>)
       )}
     </>
   );
