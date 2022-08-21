@@ -10,6 +10,7 @@ If we don't see network request wrap the key in the useQuery inside an array.
 
 ### ReactQueryDevTools
 
+```ssh
 To get this to work with react-query@4, I had to do the following:
 
 in the command line:
@@ -23,3 +24,4 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 update import statement in RQSuperHeroes.js to:
 import { useQuery } from '@tanstack/react-query'
+```
