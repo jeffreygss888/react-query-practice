@@ -17,10 +17,10 @@ export const RQSuperHeroesPage = () => {
   const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
     'super-heroes',
     fetchSuperHeroes,
-    // NOTES to control our useQuery() fetch on events
     {
       onSuccess,
       onError,
+      // NOTES enabled is a param options to make our useQuery(); to control on event handlers.
       enabled: false,
       // NOTES We can manipulate the response data here before we serve it to the client side
       select: (data) => {
