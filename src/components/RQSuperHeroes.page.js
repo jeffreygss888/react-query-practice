@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-const fetchSuperHeroes = () => axios.get('http://localhost:4000/superheroes1');
+const fetchSuperHeroes = () => axios.get('http://localhost:4000/superheroes');
 
 export const RQSuperHeroesPage = () => {
   // NOTES useQuery() callback function if onError or onSuccess fetching data
@@ -22,6 +22,11 @@ export const RQSuperHeroesPage = () => {
       onSuccess,
       onError,
       enabled: false,
+      // NOTES We can manipulate the response data here before we serve it to the client side
+      select: (data) => {
+        const newData = data.data.map((hero, i) => `${i + 1}. ${hero.name}`);
+        return newData;
+      },
     }
 
     // {
@@ -75,6 +80,11 @@ export const RQSuperHeroesPage = () => {
   // NOTES isFetching is a boolean if our query is fetching/refetching our data
   console.log(isFetching);
 
+  // Error object
+  console.log(error);
+
+  console.log(data);
+
   return (
     <>
       <h2>React Query Super Heroes Page</h2>
@@ -86,7 +96,7 @@ export const RQSuperHeroesPage = () => {
       {isLoading || isFetching ? (
         <p>Loading...</p>
       ) : (
-        data?.data.map((hero) => <div key={hero.name}>{hero.name}</div>)
+        data?.map((hero) => <div key={hero}>{hero}</div>)
       )}
     </>
   );
