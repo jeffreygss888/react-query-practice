@@ -11,10 +11,10 @@ const useSuperHeroesData = (onSuccess, onError) => {
       // NOTES enabled is a param options to make our useQuery(); to control on event handlers.
       enabled: false,
       // NOTES We can manipulate the response data here before we serve it to the client side
-      select: (data) => {
-        const newData = data.data.map((hero, i) => `${i + 1}. ${hero.name}`);
-        return newData;
-      },
+      // select: (data) => {
+      //   const newData = data.data.map((hero, i) => `${i + 1}. ${hero.name}`);
+      //   return newData;
+      // },
     }
 
     // {

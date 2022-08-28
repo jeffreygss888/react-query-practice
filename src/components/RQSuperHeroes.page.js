@@ -1,4 +1,5 @@
 import useSuperHeroesData from '../hooks/useSuperHeroesData';
+import { Link } from 'react-router-dom';
 
 export const RQSuperHeroesPage = () => {
   /* NOTES
@@ -36,11 +37,23 @@ export const RQSuperHeroesPage = () => {
       </button>
       {/* NOTES data returns an object of our queried data */}
       {/* isLoading || isFetching is a must if you are fetching onEvent else isLoading can suffice */}
+      {/* NOTES Hero data not manipulated */}
       {isLoading || isFetching ? (
         <p>Loading...</p>
       ) : (
-        data?.map((hero) => <div key={hero}>{hero}</div>)
+        data?.data.map((hero) => (
+          <div key={hero.id}>
+            <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
+          </div>
+        ))
       )}
+
+      {/* NOTES Hero data manipulated */}
+      {/* {isLoading || isFetching ? (
+        <p>Loading...</p>
+      ) : (
+        data?.map((hero) => <div key={hero}>{hero}</div>)
+      )} */}
     </>
   );
 };
