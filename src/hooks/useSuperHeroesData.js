@@ -1,4 +1,5 @@
-import { useQuery } from 'react-query';
+import axios from 'axios';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { axiosFetcher } from '../lib/axiosFetcher';
 
 const useSuperHeroesData = (onSuccess, onError) => {
@@ -9,7 +10,7 @@ const useSuperHeroesData = (onSuccess, onError) => {
       onSuccess,
       onError,
       // NOTES enabled is a param options to make our useQuery(); to control on event handlers.
-      enabled: false,
+      // enabled: false,
       // NOTES We can manipulate the response data here before we serve it to the client side
       // select: (data) => {
       //   const newData = data.data.map((hero, i) => `${i + 1}. ${hero.name}`);
@@ -62,6 +63,24 @@ const useSuperHeroesData = (onSuccess, onError) => {
   );
 
   return queryFunction;
+};
+
+const addSuperHero = (hero) => {
+  return axios.post('http://localhost:4000/superheroes', hero);
+};
+
+// NOTES This is how we mutate our data
+export const useAddSuperHeroData = () => {
+  const queryClient = useQueryClient();
+
+  // NOTES first param is the post fetch function
+  return useMutation(addSuperHero, {
+    onSuccess: () => {
+      // NOTES To refetch the query when mutation is success
+      // This invalidates our query so useQuery() reruns the query process again
+      queryClient.invalidateQueries('super-heroes');
+    },
+  });
 };
 
 export default useSuperHeroesData;

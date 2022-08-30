@@ -1,7 +1,13 @@
-import useSuperHeroesData from '../hooks/useSuperHeroesData';
+import { useState } from 'react';
+import useSuperHeroesData, {
+  useAddSuperHeroData,
+} from '../hooks/useSuperHeroesData';
 import { Link } from 'react-router-dom';
 
 export const RQSuperHeroesPage = () => {
+  const [name, setName] = useState('');
+  const [alterEgo, setAlterEgo] = useState('');
+
   /* NOTES
     - The First Params is the key of the query
     - Second params is the fetcher
@@ -17,21 +23,52 @@ export const RQSuperHeroesPage = () => {
   const { isLoading, data, isError, error, isFetching, refetch } =
     useSuperHeroesData(onSuccess, onError);
 
+  // NOTES This is how we invoke the useAddSuperHeroData() we destructure a mutate function that takes in the data to be sent to our DB
+  const { mutate } = useAddSuperHeroData();
+
   if (isError) {
     return <p>Heroes not found</p>;
   }
 
   // NOTES isFetching is a boolean if our query is fetching/refetching our data
-  console.log(isFetching);
+  // console.log(isFetching);
 
   // Error object
-  console.log(error);
+  // console.log(error);
 
-  console.log(data);
+  // console.log(data);
+
+  const resetFields = () => {
+    setAlterEgo('');
+    setName('');
+  };
+
+  const handleAddHeroClick = () => {
+    const hero = { name, alterEgo };
+
+    // NOTES Takes in the data for post
+    mutate(hero);
+    resetFields();
+  };
 
   return (
     <>
       <h2>React Query Super Heroes Page</h2>
+      <div>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          value={alterEgo}
+          onChange={(e) => setAlterEgo(e.target.value)}
+        />
+        <button type="button" onClick={handleAddHeroClick}>
+          Submit
+        </button>
+      </div>
       <button type="button" onClick={refetch}>
         Fetch super heroes
       </button>

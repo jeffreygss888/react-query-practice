@@ -14,12 +14,56 @@
       "id": 3,
       "name": "Wonder Woman",
       "alterEgo": "Princess Diana"
+    },
+    {
+      "name": "test",
+      "alterEgo": "dwafwa",
+      "id": 4
+    },
+    {
+      "name": "test 2",
+      "alterEgo": "POSTED!",
+      "id": 5
+    },
+    {
+      "name": "test",
+      "alterEgo": "1",
+      "id": 6
+    },
+    {
+      "name": "wdawf",
+      "alterEgo": "wadfaw",
+      "id": 7
+    },
+    {
+      "name": "tesa",
+      "alterEgo": "dwafa",
+      "id": 8
+    },
+    {
+      "name": "fwagawg",
+      "alterEgo": "awgawgaw",
+      "id": 9
+    },
+    {
+      "name": "wagawg",
+      "alterEgo": "awgagaw",
+      "id": 10
     }
   ],
   "friends": [
-    { "id": 1, "name": "Friend 1" },
-    { "id": 2, "name": "Friend 2" },
-    { "id": 3, "name": "Friend 3" }
+    {
+      "id": 1,
+      "name": "Friend 1"
+    },
+    {
+      "id": 2,
+      "name": "Friend 2"
+    },
+    {
+      "id": 3,
+      "name": "Friend 3"
+    }
   ],
   "users": [
     {
@@ -30,16 +74,41 @@
   "channels": [
     {
       "id": "testevo",
-      "courses": ["react", "angular", "vue"]
+      "courses": [
+        "react",
+        "angular",
+        "vue"
+      ]
     }
   ],
   "colors": [
-    { "id": 1, "label": "blue" },
-    { "id": 2, "label": "red" },
-    { "id": 3, "label": "purple" },
-    { "id": 4, "label": "pink" },
-    { "id": 5, "label": "white" },
-    { "id": 6, "label": "black" },
-    { "id": 7, "label": "violet" }
+    {
+      "id": 1,
+      "label": "blue"
+    },
+    {
+      "id": 2,
+      "label": "red"
+    },
+    {
+      "id": 3,
+      "label": "purple"
+    },
+    {
+      "id": 4,
+      "label": "pink"
+    },
+    {
+      "id": 5,
+      "label": "white"
+    },
+    {
+      "id": 6,
+      "label": "black"
+    },
+    {
+      "id": 7,
+      "label": "violet"
+    }
   ]
 }
