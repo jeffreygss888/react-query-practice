@@ -32,5 +32,14 @@
       "id": "testevo",
       "courses": ["react", "angular", "vue"]
     }
+  ],
+  "colors": [
+    { "id": 1, "label": "blue" },
+    { "id": 2, "label": "red" },
+    { "id": 3, "label": "purple" },
+    { "id": 4, "label": "pink" },
+    { "id": 5, "label": "white" },
+    { "id": 6, "label": "black" },
+    { "id": 7, "label": "violet" }
   ]
 }
