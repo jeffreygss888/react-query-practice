@@ -11,6 +11,7 @@ import { ParallelQueriesPage } from './components/ParallelQueries.page';
 import { DynamicParallelPage } from './components/DynamicParallel.page';
 import { DependentQueriesPage } from './components/DependentQueries.page';
 import { PaginatedQueriesPage } from './components/PaginatedQueries.page';
+import { InfinitePaginatedQueriesPage } from './components/InfinitePaginatedQueries.page';
 
 // NOTES this is how we setup our QueryClientProvider
 const queryClient = new QueryClient();
@@ -34,9 +35,15 @@ function App() {
               <li>
                 <Link to="/rq-paginated">RQ Pagination</Link>
               </li>
+              <li>
+                <Link to="/rq-infinite">RQ Infinite Pagination</Link>
+              </li>
             </ul>
           </nav>
           <Switch>
+            <Route path="/rq-infinite">
+              <InfinitePaginatedQueriesPage />
+            </Route>
             <Route path="/rq-paginated">
               <PaginatedQueriesPage />
             </Route>
